@@ -10,18 +10,24 @@ def refresh_app():
         # Get the window by title
         window = gw.getWindowsWithTitle(APP_TITLE)[0]
         
-        # Restore the window if it's minimized
-        if window.isMinimized:
-            window.restore()  # Restore the window
-            time.sleep(1)      # Wait for a second to ensure it's restored
+        if not windows: 
+            print("Application not found.")
+            return
+        
 
-        # Bring the window to the foreground
-        window.activate()
-        time.sleep(0.5)  # Wait for a moment to ensure the window is active
+        for window in windows:
+            # Restore the window if it's minimized
+            if window.isMinimized:
+                window.restore()  # Restore the window
+                time.sleep(1)      # Wait for a second to ensure it's restored
 
-        # Simulate pressing F5
-        pyautogui.press('f5')
-        print(f"{APP_TITLE} refreshed.")
+            # Bring the window to the foreground
+            window.activate()
+            time.sleep(0.5)  # Wait for a moment to ensure the window is active
+
+            # Simulate pressing F5
+            pyautogui.press('f5')
+            print(f"{APP_TITLE} refreshed.")
 
     except IndexError:
         print("Application not found.")
