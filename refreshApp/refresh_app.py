@@ -8,7 +8,7 @@ APP_TITLE = 'WhatsApp Web'
 def refresh_app():
     try:
         # Get the window by title
-        window = gw.getWindowsWithTitle(APP_TITLE)[0]
+        windows = gw.getWindowsWithTitle(APP_TITLE)
         
         if not windows: 
             print("Application not found.")
